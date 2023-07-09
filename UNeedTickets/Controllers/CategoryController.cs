@@ -14,7 +14,7 @@ namespace UNeedTickets.Controllers
         }
         public IActionResult Index()
         {
-            List<Category> objCategoryList = _db.Categories.ToList();
+			List<Tickets> objCategoryList = _db.Tickets.ToList();
             return View(objCategoryList);
         }
         public IActionResult Create() 
@@ -22,43 +22,42 @@ namespace UNeedTickets.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Category obj) 
+        public IActionResult Create(Tickets obj) 
         {
-            _db.Categories.Add(obj);
+            _db.Tickets.Add(obj);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
 		public IActionResult Edit(int id)
 		{
-            Category categoryFromDb= _db.Categories.Find(id);
-			return View(categoryFromDb);
+            Tickets? ticketFromDb= _db.Tickets.Find(id);
+			return View(ticketFromDb);
 		}
 		[HttpPost]
-		public IActionResult Edit(Category obj)
+		public IActionResult Edit(Tickets obj)
 		{
-			_db.Categories.Update(obj);
+			_db.Tickets.Update(obj);
 			_db.SaveChanges();
 			return RedirectToAction("Index");
 		}
 
 		public IActionResult Delete(int? id)
 		{
-			Category? categoryFromDb = _db.Categories.Find(id);
+			Tickets? categoryFromDb = _db.Tickets.Find(id);
 			return View(categoryFromDb);
 		}
 		
 		[HttpPost, ActionName("Delete")]
-
 		public IActionResult DeletePOST(int? id)
 		{
-			Category? obj = _db.Categories.Find(id);
+			Tickets? obj = _db.Tickets.Find(id);
 			if (obj == null)
 			{
 				return NotFound();
 			}
 
-			_db.Categories.Remove(obj);
+			_db.Tickets.Remove(obj);
 			_db.SaveChanges();
 			return RedirectToAction("Index");
 		}

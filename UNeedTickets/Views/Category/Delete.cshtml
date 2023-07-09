@@ -1,4 +1,4 @@
-﻿@model Category
+﻿@model Tickets
 
 <form method="post">
 	<div class="border p-3 mt-4">
@@ -7,12 +7,38 @@
 			<hr />
 		</div>
 		<div class="mb-3 row p-1">
-			<label asp-for="Name" class="p-0"></label>
-			<input asp-for="Name" disabled class="form-control" />
+			<label asp-for="Title" class="p-0"></label>
+			<input asp-for="Title" disabled class="form-control" />
 		</div>
 		<div class="mb-3 row p-1">
-			<label asp-for="DisplayOrder" class="p-0"></label>
-			<input asp-for="DisplayOrder" disabled type="text" class="form-control" />
+			<label asp-for="Id" class="p-0"></label>
+			<input asp-for="Id" disabled type="text" class="form-control" />
+		</div>
+
+		<div class="mb-3 row p-1">
+			<label asp-for="Summary" class="p-0"></label>
+			<input asp-for="Summary" disabled type="text" class="form-control" />
+		</div>
+
+		<div class="mb-3 row p-1">
+			<label asp-for="Description" class="p-0"></label>
+			<input asp-for="Description" disabled type="text" class="form-control" />
+		</div>
+
+		<div class="mb-3 row p-1">
+			<label asp-for="Status" class="p-0"></label>
+			<select asp-for="Status" disabled class="form-control">
+				<option value="OPEN">OPEN</option>
+				<option value="CLOSED">CLOSED</option>
+			</select>
+		</div>
+
+		<div class="mb-3 row p-1">
+			<label asp-for="ResolvedorNot" class="p-0"></label>
+			<select asp-for="ResolvedorNot" disabled class="form-control">
+				<option value=true>True</option>
+				<option value=false>False</option>
+			</select>
 		</div>
 
 		<div class="row">
