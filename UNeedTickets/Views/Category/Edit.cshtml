@@ -1,45 +1,109 @@
 ﻿@model Tickets
+@using UNeedTickets.Models
 
 <form method="post">
 	<div class="border p-3 mt-4">
+
 		<div class="row pb-2">
-			<h2 class="text-primary">Edit Category</h2>
+			<h2 class="text-primary">Edit Ticket</h2>
 			<hr />
 		</div>
+
 		<div class="mb-3 row p-1">
 			<label asp-for="Title" class="p-0"></label>
-			<input asp-for="Title"  class="form-control" />
+			<input asp-for="Title" disabled  class="form-control" />
 		</div>
+
 		<div class="mb-3 row p-1">
 			<label asp-for="Id" class="p-0"></label>
 			<input asp-for="Id" disabled type="text" class="form-control" />
 		</div>
 
-		<div class="mb-3 row p-1">
-			<label asp-for="Summary" class="p-0"></label>
-			<input asp-for="Summary"  type="text" class="form-control" />
-		</div>
+
+		
+			<div class="mb-3 row p-1">
+				<label asp-for="Summary" class="p-0"></label>
+			@if (User.IsInRole(SD.Role_QA))
+			{
+				<input asp-for="Summary"  type="text" class="form-control" />
+			}
+			@if (User.IsInRole(SD.Role_RD))
+			{
+				<input asp-for="Summary" disabled type="text" class="form-control" />
+			}
+
+			</div>
+		
+
+
+
 
 		<div class="mb-3 row p-1">
 			<label asp-for="Description" class="p-0"></label>
-			<input asp-for="Description"  type="text" class="form-control" />
+
+			@if (User.IsInRole(SD.Role_QA))
+			{
+				<input asp-for="Description"  type="text" class="form-control" />
+			}
+			@if (User.IsInRole(SD.Role_RD))
+			{
+				<input asp-for="Description" disabled type="text" class="form-control" />
+			}
+
 		</div>
+
+
 
 		<div class="mb-3 row p-1">
 			<label asp-for="Status" class="p-0"></label>
-			<select asp-for="Status" class="form-control">
-				<option value="OPEN">OPEN</option>
+			@if (User.IsInRole(SD.Role_QA))
+			{
+				<select asp-for="Status" class="form-control">
+					<option value="OPEN">OPEN</option>
 				<option value="CLOSED">CLOSED</option>
 			</select>
+			}
+			@if (User.IsInRole(SD.Role_RD))
+			{
+				<select asp-for="Status" disabled class="form-control">
+					<option value="OPEN">OPEN</option>
+					<option value="CLOSED">CLOSED</option>
+				</select>
+			}
+
+
 		</div>
+
+
+
 
 		<div class="mb-3 row p-1">
 			<label asp-for="ResolvedorNot" class="p-0"></label>
-			<select asp-for="ResolvedorNot" class="form-control">
-				<option value=true>True</option>
+
+			@if (User.IsInRole(SD.Role_QA))
+			{
+
+				<select asp-for="ResolvedorNot" disabled class="form-control">
+					<option value=true>True</option>
 				<option value=false>False</option>
 			</select>
+
+			}
+
+			@if (User.IsInRole(SD.Role_RD))
+			{
+
+				<select asp-for="ResolvedorNot" class="form-control">
+					<option value=true>True</option>
+					<option value=false>False</option>
+				</select>
+
+			}
+
 		</div>
+
+
+
 
 		<div class="row">
 			<div class="col-6">
@@ -50,6 +114,9 @@
 					Back to List
 				</a>
 			</div>
+
+
+
 
 		</div>
 

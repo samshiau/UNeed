@@ -1,9 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using UNeedTickets.Models;
 
 namespace UNeedTickets.Data
 {
-    public class ApplicationDbContext : DbContext
+    [NotMapped]
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -13,8 +18,12 @@ namespace UNeedTickets.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Tickets> Tickets { get; set; }
 
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Category>().HasData(
                 new Category { Id = 1, Name = "Action", DisplayOrder = 1 },
                 new Category { Id = 2, Name = "Horror", DisplayOrder = 2 },
