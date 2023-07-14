@@ -1,10 +1,14 @@
 ﻿@model List<Tickets>;
+@using Microsoft.AspNetCore.Identity;
 @using UNeedTickets.Models
+
+
+@if (User.Identity.IsAuthenticated){
 <div class="container">
 	<div class="row pt-4 pb-3">
 		<div class="col-6">
 			<h2 class="text-primary">
-				報修單
+				Existing Tickets
 			</h2>
 		</div>
 		@if (User.IsInRole(SD.Role_QA))
@@ -26,7 +30,7 @@
 			ID 
 		</th>
 		<th>
-			標題
+			Title
 		</th>
 		<th>Summary</th>
 	</tr>
@@ -65,4 +69,13 @@
 	</tbody>
 </table>
 
-</div>
+	</div>
+
+}
+else
+{
+	<h1>
+		Click on "LOGIN" to see the tickets
+	</h1>
+
+}

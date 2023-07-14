@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using UNeedTickets.Data;
 using UNeedTickets.Models;
 
 
 namespace UNeedTickets.Controllers
 {
+	
     public class CategoryController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -12,7 +14,9 @@ namespace UNeedTickets.Controllers
         {
             _db = db;
         }
-        public IActionResult Index()
+
+		
+		public IActionResult Index()
         {
 			List<Tickets> objCategoryList = _db.Tickets.ToList();
             return View(objCategoryList);
