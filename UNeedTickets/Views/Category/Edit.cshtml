@@ -11,12 +11,12 @@
 
 		<div class="mb-3 row p-1">
 			<label asp-for="Title" class="p-0"></label>
-			<input asp-for="Title" disabled  class="form-control" />
+			<input asp-for="Title" readonly class="form-control" />
 		</div>
 
 		<div class="mb-3 row p-1">
 			<label asp-for="Id" class="p-0"></label>
-			<input asp-for="Id" disabled type="text" class="form-control" />
+			<input asp-for="Id" readonly type="text" class="form-control" />
 		</div>
 
 
@@ -29,7 +29,7 @@
 			}
 			@if (User.IsInRole(SD.Role_RD))
 			{
-				<input asp-for="Summary" disabled type="text" class="form-control" />
+				<input asp-for="Summary" readonly type="text" class="form-control" />
 			}
 
 			</div>
@@ -47,7 +47,7 @@
 			}
 			@if (User.IsInRole(SD.Role_RD))
 			{
-				<input asp-for="Description" disabled type="text" class="form-control" />
+				<input asp-for="Description" readonly type="text" class="form-control" />
 			}
 
 		</div>
@@ -60,12 +60,12 @@
 			{
 				<select asp-for="Status" class="form-control">
 					<option value="OPEN">OPEN</option>
-				<option value="CLOSED">CLOSED</option>
-			</select>
+					<option value="CLOSED">CLOSED</option>
+				</select>
 			}
 			@if (User.IsInRole(SD.Role_RD))
 			{
-				<select asp-for="Status" disabled class="form-control">
+				<select asp-for="Status" class="form-control" style="cursor: not-allowed; pointer-events: none;">
 					<option value="OPEN">OPEN</option>
 					<option value="CLOSED">CLOSED</option>
 				</select>
@@ -83,10 +83,10 @@
 			@if (User.IsInRole(SD.Role_QA))
 			{
 
-				<select asp-for="ResolvedorNot" disabled class="form-control">
+				<select asp-for="ResolvedorNot" class="form-control" style="cursor: not-allowed; pointer-events: none;">
 					<option value=true>True</option>
-				<option value=false>False</option>
-			</select>
+					<option value=false>False</option>
+				</select>
 
 			}
 
@@ -107,10 +107,10 @@
 
 		<div class="row">
 			<div class="col-6">
-				<button type="submit" class="btn btn-primary form-control">Update</button>
+				<button type="submit" class="btn btn-success form-control">Update</button>
 			</div>
 			<div class="col-6">
-				<a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary border form-control">
+				<a asp-controller="Category" asp-action="Index" class="btn btn-info form-control">
 					Back to List
 				</a>
 			</div>

@@ -3,7 +3,7 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<ul class="navbar-nav">
+<ul class="navbar-nav centered-list">
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
@@ -11,17 +11,19 @@
     </li>
     <li class="nav-item">
         <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Category", new { area = "" })">
-            <button id="logout" type="submit" class="nav-link btn btn-link text-white border-0">Logout</button>
+                <button  id="logout" type="submit" class="nav-link btn btn-link text-white border-0">Logout</button>
         </form>
     </li>
 }
 else
 {
+    <!--
     <li class="nav-item">
-        <a class="nav-link text-white" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        <a class="nav-link text-white" id="register" asp-area="Identity" asp-page="/Account/Register" style="font-size:17px">Register</a>
     </li>
+    -->
     <li class="nav-item">
-        <a class="nav-link text-white" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            <a class="nav-link text-white" id="login" asp-area="Identity" asp-page="/Account/Login" style="font-size:17px">Login</a>
     </li>
 }
 </ul>
