@@ -32,6 +32,8 @@
 			Title
 		</th>
 		<th>Summary</th>
+		<th>Status</th>
+		<th>Options</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -42,6 +44,7 @@
 				<td>@obj.Id</td>
 				<td>@obj.Title</td>
 				<td>@obj.Summary</td>
+				<td>@obj.Status</td>
 				<td>
 					<div class="w-75 btn-group" role="group">
 						<a asp-controller="Category" asp-action="Edit" asp-route-Id="@obj.Id" class="btn btn-info mx-2">

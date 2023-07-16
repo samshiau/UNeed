@@ -4,14 +4,17 @@
 @inject UserManager<IdentityUser> UserManager
 
 <ul class="navbar-nav centered-list">
+    
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
-        <a id="manage" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+            <br>
+            <p class="nav-link text-white" style="font-size:17px">Hello @UserManager.GetUserName(User)!</p>
     </li>
     <li class="nav-item">
-        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Category", new { area = "" })">
-                <button  id="logout" type="submit" class="nav-link btn btn-link text-white border-0">Logout</button>
+            <br>
+            <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Category", new { area = "" })">
+                <button style="font-size:17px" id="logout" type="submit" class="nav-link btn btn-link text-white border-0">Logout</button>
         </form>
     </li>
 }

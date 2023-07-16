@@ -11,12 +11,12 @@
 
 		<div class="mb-3 row p-1">
 			<label asp-for="Title" class="p-0"></label>
-			<input asp-for="Title" readonly class="form-control" />
+			<input asp-for="Title" readonly class="form-control" style="background-color:lightgrey" />
 		</div>
 
 		<div class="mb-3 row p-1">
 			<label asp-for="Id" class="p-0"></label>
-			<input asp-for="Id" readonly type="text" class="form-control" />
+			<input asp-for="Id" readonly type="text" class="form-control" style="background-color:lightgrey" />
 		</div>
 
 
@@ -29,7 +29,7 @@
 			}
 			@if (User.IsInRole(SD.Role_RD))
 			{
-				<input asp-for="Summary" readonly type="text" class="form-control" />
+				<input asp-for="Summary" readonly type="text" class="form-control" style="background-color:lightgrey" />
 			}
 
 			</div>
@@ -47,7 +47,7 @@
 			}
 			@if (User.IsInRole(SD.Role_RD))
 			{
-				<input asp-for="Description" readonly type="text" class="form-control" />
+				<input asp-for="Description" readonly type="text" class="form-control" style="background-color:lightgrey" />
 			}
 
 		</div>
@@ -65,7 +65,7 @@
 			}
 			@if (User.IsInRole(SD.Role_RD))
 			{
-				<select asp-for="Status" class="form-control" style="cursor: not-allowed; pointer-events: none;">
+				<select asp-for="Status" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
 					<option value="OPEN">OPEN</option>
 					<option value="CLOSED">CLOSED</option>
 				</select>
@@ -78,12 +78,12 @@
 
 
 		<div class="mb-3 row p-1">
-			<label asp-for="ResolvedorNot" class="p-0"></label>
+			<label asp-for="ResolvedorNot" class="p-0">Resolved or Not</label>
 
 			@if (User.IsInRole(SD.Role_QA))
 			{
 
-				<select asp-for="ResolvedorNot" class="form-control" style="cursor: not-allowed; pointer-events: none;">
+				<select asp-for="ResolvedorNot" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
 					<option value=true>True</option>
 					<option value=false>False</option>
 				</select>

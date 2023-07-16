@@ -34,7 +34,7 @@
 		</div>
 
 		<div class="mb-3 row p-1">
-			<label asp-for="ResolvedorNot" class="p-0"></label>
+			<label asp-for="ResolvedorNot" class="p-0">Resolved or Not</label>
 			<select asp-for="ResolvedorNot" disabled class="form-control">
 				<option value=true>True</option>
 				<option value=false>False</option>
@@ -46,7 +46,7 @@
 				<button type="submit" class="btn btn-danger form-control">Delete</button>
 			</div>
 			<div class="col-6">
-				<a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary border form-control">
+				<a asp-controller="Category" asp-action="Index" class="btn btn-info border form-control">
 					Back to List
 				</a>
 			</div>
