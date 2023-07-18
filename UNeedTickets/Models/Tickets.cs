@@ -21,5 +21,13 @@ namespace UNeedTickets.Models
 
 		[Required]
 		public bool ResolvedorNot { get; set; }
+
+		[Required]
+		public string Severity { get; set; }
+
+		[Required]
+		public string Priority { get; set; }
+
+
 	}
 }

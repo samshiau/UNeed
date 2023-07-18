@@ -29,10 +29,10 @@ namespace UNeedTickets.Data
                 new Category { Id = 2, Name = "Horror", DisplayOrder = 2 },
                 new Category { Id = 3, Name = "History", DisplayOrder = 3 }
                 );
-            modelBuilder.Entity<Tickets>().HasData(
-                new Tickets { Id = 1, Title= "Hardware Defects D-4", Summary="The devices is not working", 
-                    Description="2023-3-13 Blah Blah Blah ...", Status="OPEN", ResolvedorNot=false }
-                );
+           // modelBuilder.Entity<Tickets>().HasData(
+             //   new Tickets { Id = 1, Title= "Hardware Defects D-4", Summary="The devices is not working", 
+              //      Description="2023-3-13 Blah Blah Blah ...", Status="OPEN", ResolvedorNot=false }
+             //   );
         }
     }
 }
