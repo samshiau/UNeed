@@ -31,6 +31,7 @@
 		<th>
 			Title
 		</th>
+		<th>Request Type</th>
 		<th>Priority</th>
 		<th>Severity</th>
 		<th>Status</th>
@@ -44,7 +45,7 @@
 			<tr style="height:40px;">
 				<td>@obj.Id</td>
 				<td>@obj.Title</td>
-
+				<td>@obj.RequestType</td>
 
 				@if (obj.Priority == "P1: Less than 4hrs")
 				{

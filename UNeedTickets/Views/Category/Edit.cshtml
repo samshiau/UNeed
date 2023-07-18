@@ -19,6 +19,21 @@
 			<input asp-for="Id" readonly type="text" class="form-control" style="background-color:lightgrey" />
 		</div>
 
+		<div>
+			<label asp-for="RequestType" class="p-0">Request Type</label>
+			<select asp-for="RequestType" class="form-control">
+				<option value="Defects">Defects</option>
+				<option value="Feature request">Feature request</option>
+				<option value="Test case">Test case</option>
+				<option value="Task">Task</option>
+				<option value="Improvement">Improvement</option>
+				<option value="Documentation">Documentation</option>
+				<option value="Support">Support</option>
+				<option value="Epic">Epic</option>
+				<option value="Research">Research</option>
+
+			</select>
+		</div>
 
 		<div>
 

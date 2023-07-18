@@ -8,6 +8,9 @@ namespace UNeedTickets.Models
 		public int Id { get; set; }
 
 		[Required]
+		public string RequestType { get; set; }
+
+		[Required]
 		public string Title { get; set; }
 
 		[Required]

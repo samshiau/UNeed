@@ -16,6 +16,22 @@
 		</div>
 
 		<div>
+			<label asp-for="RequestType" class="p-0">Request Type</label>
+			<select asp-for="RequestType" class="form-control">
+				<option value="Defects">Defects</option>
+				<option value="Feature request">Feature request</option>
+				<option value="Test case">Test case</option>
+				<option value="Task">Task</option>
+				<option value="Improvement">Improvement</option>
+				<option value="Documentation">Documentation</option>
+				<option value="Support">Support</option>
+				<option value="Epic">Epic</option>
+				<option value="Research">Research</option>
+
+			</select>
+		</div>
+
+		<div>
 
 			<label asp-for="Priority" class="p-0"></label>
 			<select asp-for="Priority" class="form-control">
