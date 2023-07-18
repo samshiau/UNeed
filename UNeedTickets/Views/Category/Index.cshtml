@@ -44,9 +44,50 @@
 			<tr>
 				<td>@obj.Id</td>
 				<td>@obj.Title</td>
-				<td>@obj.Priority</td>
-				<td>@obj.Severity</td>
+
+
+				@if (obj.Priority == "P1: Less than 4hrs")
+				{
+					<td style="background-color: red;">@obj.Priority</td>
+				}
+
+				@if (obj.Priority == "P2: 4hrs to 24hrs")
+				{
+					<td style="background-color: orange;">@obj.Priority</td>
+				}
+
+				@if (obj.Priority == "P3: 24hrs to 3days")
+				{
+					<td style="background-color: yellow;">@obj.Priority</td>
+				}
+
+				@if (obj.Priority == "P4: 3days to 5days")
+				{
+					<td style="background-color: deepskyblue;">@obj.Priority</td>
+				}
+
+				@if (obj.Priority == "P5: More than 5days")
+				{
+					<td style="background-color: lawngreen;">@obj.Priority</td>
+				}
+
+
+				@if(obj.Severity=="1: Minor")
+				{
+					<td style="background-color: yellow;">@obj.Severity</td>
+				}
+				@if(obj.Severity == "2: Major")
+				{
+					<td style="background-color: orange;">@obj.Severity</td>
+				}
+				@if(obj.Severity == "3: Critical")
+				{
+					<td style="background-color: red;">@obj.Severity</td>
+				}
+						
 				<td>@obj.Status</td>
+
+
 				<td>
 					<div class="w-75 btn-group" role="group">
 						<a asp-controller="Category" asp-action="Edit" asp-route-Id="@obj.Id" class="btn btn-info mx-2">
