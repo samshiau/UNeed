@@ -11,7 +11,7 @@
 				Existing Tickets
 			</h2>
 		</div>
-		@if (User.IsInRole(SD.Role_QA))
+			@if (User.IsInRole(SD.Role_QA) || User.IsInRole(SD.Role_Ad))
 		{
 			<div class="col-6 text-end">
 				<a asp-controller="Category" asp-action="Create" class="btn btn-success">

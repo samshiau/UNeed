@@ -122,10 +122,13 @@ namespace UNeedTickets.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
-            if (!_roleManager.RoleExistsAsync(SD.Role_RD).GetAwaiter().GetResult()) { 
+            if (!_roleManager.RoleExistsAsync(SD.Role_PM).GetAwaiter().GetResult()) { 
                 _roleManager.CreateAsync(new IdentityRole(SD.Role_RD)).GetAwaiter().GetResult();
                 _roleManager.CreateAsync(new IdentityRole(SD.Role_QA)).GetAwaiter().GetResult();
-            }
+                _roleManager.CreateAsync(new IdentityRole(SD.Role_PM)).GetAwaiter().GetResult();
+				_roleManager.CreateAsync(new IdentityRole(SD.Role_Ad)).GetAwaiter().GetResult();
+
+			}
 
             Input = new(){
                 RoleList = _roleManager.Roles.Select(x => x.Name).Select(i => new SelectListItem{

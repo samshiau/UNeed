@@ -1,7 +1,7 @@
-﻿@page
+﻿@page "/registeranacc"
 @model RegisterModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Accounts";
 }
 
 <p style="font-size:40px" class="text-center">@ViewData["Title"]</p>
@@ -9,7 +9,7 @@
 <div class="row" style="display: flex; justify-content: center; align-items: center;">
     <div class="col-md-4">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <p class="text-center" style="font-size: 20px;color:black">Create a new account.</p>
+            <p class="text-center" style="font-size: 20px;color:black">Add a new user account.</p>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="form-floating mb-3">
@@ -35,7 +35,7 @@
                 
             </div>
 
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-success" style="font-size:20px">Register</button>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-success " style="font-size:20px">Add</button>
         </form>
     </div>
     <!--

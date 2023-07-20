@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "UserAccounts";
+}
+
+<style>
+	.custom-row {
+		margin-left: 250px;
+		margin-right: 250px;
+	}
+</style>
+
+<div>
+
+	<div class="row pt-4 pb-3 custom-row">
+		<div class="col-6">
+			<h2 class="text-primary">
+				Current Accounts
+			</h2>
+		</div>
+
+		<div class="col-6 text-end">
+			<a style="font-size:20px" asp-page="/Account/Register" asp-route-returnUrl="@Model.ReturnUrl">Create an account</a>
+			
+		</div>
+	</div>
+
+</div>

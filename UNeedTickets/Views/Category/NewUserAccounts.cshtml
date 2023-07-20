@@ -1,0 +1,60 @@
+﻿@page
+
+@{
+}
+
+@model ApplicationUser
+
+<style>
+	.custom-row {
+		margin-left: 250px;
+		margin-right: 250px;
+	}
+</style>
+
+<div>
+	<div class="row pt-4 pb-3 custom-row">
+		<div class="col-6">
+			<h2 class="text-primary">
+			Current Accounts
+			</h2>
+		</div>
+
+		<div class="col-6 text-right">
+			<partial name="_LoginPartial - Copy" />
+		</div>
+	</div>
+
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>
+					Username
+				</th>
+				<th>
+					Role
+				</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+
+			@foreach (var obj in Model)
+			{
+				<tr style="height:40px;">
+					<td></td>
+					<td></td>		
+				</tr>
+			}
+
+
+
+
+		</tbody>
+	</table>
+
+
+
+
+
+</div>

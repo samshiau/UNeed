@@ -15,7 +15,16 @@ namespace UNeedTickets.Controllers
             _db = db;
         }
 
-		
+		public IActionResult NewUserAccounts()
+		{ 
+			return View();	
+		}
+
+		public IActionResult Register() 
+		{
+			return View();
+		}
+
 		public IActionResult Index()
         {
 			List<Tickets> objCategoryList = _db.Tickets.ToList();

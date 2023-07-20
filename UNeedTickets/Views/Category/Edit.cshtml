@@ -2,155 +2,160 @@
 @using UNeedTickets.Models
 
 <form method="post">
-	<div class="border p-3 mt-4">
 
-		<div class="row pb-2">
-			<h2 class="text-primary">Edit Ticket</h2>
-			<hr />
-		</div>
+	
+	@if (Model.RequestType == "Defects")
+	{
+		<div class="border p-3 mt-4">
 
-		<div class="mb-3 row p-1">
-			<label asp-for="Title" class="p-0"></label>
-			<input asp-for="Title" readonly class="form-control" style="background-color:lightgrey" />
-		</div>
+			<!--HEADER-->
+			<div class="row pb-2">
+				<h2 class="text-primary">Edit Ticket</h2>
+				<hr />
+			</div>
 
-		<div class="mb-3 row p-1">
-			<label asp-for="Id" class="p-0"></label>
-			<input asp-for="Id" readonly type="text" class="form-control" style="background-color:lightgrey" />
-		</div>
-
-		<div>
-			<label asp-for="RequestType" class="p-0">Request Type</label>
-			<select asp-for="RequestType" class="form-control">
-				<option value="Defects">Defects</option>
-				<option value="Feature request">Feature request</option>
-				<option value="Test case">Test case</option>
-				<option value="Task">Task</option>
-				<option value="Improvement">Improvement</option>
-				<option value="Documentation">Documentation</option>
-				<option value="Support">Support</option>
-				<option value="Epic">Epic</option>
-				<option value="Research">Research</option>
-
-			</select>
-		</div>
-
-		<div>
-
-			<label asp-for="Priority" class="p-0"></label>
-			<select asp-for="Priority" class="form-control">
-				<option value="P1: Less than 4hrs">P1: Less than 4hrs</option>
-				<option value="P2: 4hrs to 24hrs">P2: 4hrs to 24hrs</option>
-				<option value="P3: 24hrs to 3days">P3: 24hrs to 3days</option>
-				<option value="P4: 3days to 5days">P4: 3days to 5days</option>
-				<option value="P5: More than 5days">P5: More than 5days</option>
-			</select>
-
-		</div>
-
-
-
-		<div>
-
-
-			<label asp-for="Severity" class="p-0"></label>
-			<select asp-for="Severity" class="form-control">
-				<option value="1: Minor">1: Minor</option>
-				<option value="2: Major">2: Major</option>
-				<option value="3: Critical">3: Critical</option>
-			</select>
-
-
-		</div>
-
-
-
-		
+			<!--Title-->
 			<div class="mb-3 row p-1">
-				<label asp-for="Summary" class="p-0"></label>
-			@if (User.IsInRole(SD.Role_QA))
-			{
-				<input asp-for="Summary"  type="text" class="form-control" />
-			}
-			@if (User.IsInRole(SD.Role_RD))
-			{
-				<input asp-for="Summary" readonly type="text" class="form-control" style="background-color:lightgrey" />
-			}
+				<label asp-for="Title" class="p-0"></label>
+				<input asp-for="Title" readonly class="form-control" style="background-color:lightgrey" />
+			</div>
+
+			<!--ID-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Id" class="p-0"></label>
+				<input asp-for="Id" readonly type="text" class="form-control" style="background-color:lightgrey" />
+			</div>
+
+			<!--Request type-->
+			<div>
+				<label asp-for="RequestType" class="p-0">Request Type</label>
+
+
+				<select asp-for="RequestType" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+					<option value="Defects">Defects</option>
+					<option value="Feature request">Feature request</option>
+					<option value="Test case">Test case</option>
+					<option value="Task">Task</option>
+					<option value="Improvement">Improvement</option>
+					<option value="Documentation">Documentation</option>
+					<option value="Support">Support</option>
+					<option value="Epic">Epic</option>
+					<option value="Research">Research</option>
+
+				</select>
+
+
 
 			</div>
-		
+
+			<!--Priority-->
+			<div>
+
+				<label asp-for="Priority" class="p-0"></label>
+
+				<select asp-for="Priority" class="form-control">
+					<option value="P1: Less than 4hrs">P1: Less than 4hrs</option>
+					<option value="P2: 4hrs to 24hrs">P2: 4hrs to 24hrs</option>
+					<option value="P3: 24hrs to 3days">P3: 24hrs to 3days</option>
+					<option value="P4: 3days to 5days">P4: 3days to 5days</option>
+					<option value="P5: More than 5days">P5: More than 5days</option>
+				</select>
 
 
+			</div>
+
+			<!--Severity-->
+			<div>
 
 
-		<div class="mb-3 row p-1">
-			<label asp-for="Description" class="p-0"></label>
+				<label asp-for="Severity" class="p-0"></label>
+				<select asp-for="Severity" class="form-control">
+					<option value="1: Minor">1: Minor</option>
+					<option value="2: Major">2: Major</option>
+					<option value="3: Critical">3: Critical</option>
+				</select>
 
-			@if (User.IsInRole(SD.Role_QA))
-			{
-				<input asp-for="Description"  type="text" class="form-control" />
-			}
-			@if (User.IsInRole(SD.Role_RD))
-			{
-				<input asp-for="Description" readonly type="text" class="form-control" style="background-color:lightgrey" />
-			}
+
+			</div>
+
+			<!--Summary-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Summary" class="p-0"></label>
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<input asp-for="Summary"  type="text" class="form-control" />
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<input asp-for="Summary" readonly type="text" class="form-control" style="background-color:lightgrey" />
+				}
+
+			</div>
+
+			<!--Description-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Description" class="p-0"></label>
+
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<input asp-for="Description"  type="text" class="form-control" />
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<input asp-for="Description" readonly type="text" class="form-control" style="background-color:lightgrey" />
+				}
+
+			</div>
+
+			<!--Status-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Status" class="p-0"></label>
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<select asp-for="Status" class="form-control">
+						<option value="OPEN">OPEN</option>
+						<option value="CLOSED">CLOSED</option>
+					</select>
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<select asp-for="Status" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+						<option value="OPEN">OPEN</option>
+						<option value="CLOSED">CLOSED</option>
+					</select>
+				}
+
+
+			</div>
+
+			<!--Resolved or Not-->
+			<div class="mb-3 row p-1">
+				<label asp-for="ResolvedorNot" class="p-0">Resolved or Not</label>
+
+				@if (User.IsInRole(SD.Role_QA))
+				{
+
+					<select asp-for="ResolvedorNot" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+						<option value=true>True</option>
+						<option value=false>False</option>
+					</select>
+
+				}
+
+				@if (User.IsInRole(SD.Role_RD))
+				{
+
+					<select asp-for="ResolvedorNot" class="form-control">
+						<option value=true>True</option>
+						<option value=false>False</option>
+					</select>
+
+				}
 
 		</div>
 
-
-
-		<div class="mb-3 row p-1">
-			<label asp-for="Status" class="p-0"></label>
-			@if (User.IsInRole(SD.Role_QA))
-			{
-				<select asp-for="Status" class="form-control">
-					<option value="OPEN">OPEN</option>
-					<option value="CLOSED">CLOSED</option>
-				</select>
-			}
-			@if (User.IsInRole(SD.Role_RD))
-			{
-				<select asp-for="Status" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
-					<option value="OPEN">OPEN</option>
-					<option value="CLOSED">CLOSED</option>
-				</select>
-			}
-
-
-		</div>
-
-
-
-
-		<div class="mb-3 row p-1">
-			<label asp-for="ResolvedorNot" class="p-0">Resolved or Not</label>
-
-			@if (User.IsInRole(SD.Role_QA))
-			{
-
-				<select asp-for="ResolvedorNot" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
-					<option value=true>True</option>
-					<option value=false>False</option>
-				</select>
-
-			}
-
-			@if (User.IsInRole(SD.Role_RD))
-			{
-
-				<select asp-for="ResolvedorNot" class="form-control">
-					<option value=true>True</option>
-					<option value=false>False</option>
-				</select>
-
-			}
-
-		</div>
-
-
-
-
-		<div class="row">
+			<!--Update button-->
+			<div class="row">
 			<div class="col-6">
 				<button type="submit" class="btn btn-success form-control">Update</button>
 			</div>
@@ -166,5 +171,1352 @@
 		</div>
 
 	</div>
+	}
+	@if (Model.RequestType == "Feature request")
+	{
+		<div class="border p-3 mt-4">
+
+			<!--HEADER-->
+			<div class="row pb-2">
+				<h2 class="text-primary">Edit Ticket</h2>
+				<hr />
+			</div>
+
+			<!--Title-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Title" class="p-0"></label>
+				<input asp-for="Title" readonly class="form-control" style="background-color:lightgrey" />
+			</div>
+
+			<!--ID-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Id" class="p-0"></label>
+				<input asp-for="Id" readonly type="text" class="form-control" style="background-color:lightgrey" />
+			</div>
+
+			<!--Request type-->
+			<div>
+				<label asp-for="RequestType" class="p-0">Request Type</label>
+
+
+				<select asp-for="RequestType" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+					<option value="Defects">Defects</option>
+					<option value="Feature request">Feature request</option>
+					<option value="Test case">Test case</option>
+					<option value="Task">Task</option>
+					<option value="Improvement">Improvement</option>
+					<option value="Documentation">Documentation</option>
+					<option value="Support">Support</option>
+					<option value="Epic">Epic</option>
+					<option value="Research">Research</option>
+
+				</select>
+
+
+
+			</div>
+
+			<!--Priority-->
+			<div>
+
+				<label asp-for="Priority" class="p-0"></label>
+
+				<select asp-for="Priority" class="form-control">
+					<option value="P1: Less than 4hrs">P1: Less than 4hrs</option>
+					<option value="P2: 4hrs to 24hrs">P2: 4hrs to 24hrs</option>
+					<option value="P3: 24hrs to 3days">P3: 24hrs to 3days</option>
+					<option value="P4: 3days to 5days">P4: 3days to 5days</option>
+					<option value="P5: More than 5days">P5: More than 5days</option>
+				</select>
+
+
+			</div>
+
+			<!--Severity-->
+			<div>
+
+
+				<label asp-for="Severity" class="p-0"></label>
+				<select asp-for="Severity" class="form-control">
+					<option value="1: Minor">1: Minor</option>
+					<option value="2: Major">2: Major</option>
+					<option value="3: Critical">3: Critical</option>
+				</select>
+
+
+			</div>
+
+			<!--Summary-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Summary" class="p-0"></label>
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<input asp-for="Summary" type="text" class="form-control" />
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<input asp-for="Summary" readonly type="text" class="form-control" style="background-color:lightgrey" />
+				}
+
+			</div>
+
+			<!--Description-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Description" class="p-0"></label>
+
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<input asp-for="Description" type="text" class="form-control" />
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<input asp-for="Description" readonly type="text" class="form-control" style="background-color:lightgrey" />
+				}
+
+			</div>
+
+			<!--Status-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Status" class="p-0"></label>
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<select asp-for="Status" class="form-control">
+						<option value="OPEN">OPEN</option>
+						<option value="CLOSED">CLOSED</option>
+					</select>
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<select asp-for="Status" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+						<option value="OPEN">OPEN</option>
+						<option value="CLOSED">CLOSED</option>
+					</select>
+				}
+
+
+			</div>
+
+			<!--Resolved or Not-->
+			<div class="mb-3 row p-1">
+				<label asp-for="ResolvedorNot" class="p-0">Resolved or Not</label>
+
+				@if (User.IsInRole(SD.Role_QA))
+				{
+
+					<select asp-for="ResolvedorNot" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+						<option value=true>True</option>
+						<option value=false>False</option>
+					</select>
+
+				}
+
+				@if (User.IsInRole(SD.Role_RD))
+				{
+
+					<select asp-for="ResolvedorNot" class="form-control">
+						<option value=true>True</option>
+						<option value=false>False</option>
+					</select>
+
+				}
+
+			</div>
+
+			<!--Update button-->
+			<div class="row">
+				<div class="col-6">
+					<button type="submit" class="btn btn-success form-control">Update</button>
+				</div>
+				<div class="col-6">
+					<a asp-controller="Category" asp-action="Index" class="btn btn-info form-control">
+						Back to List
+					</a>
+				</div>
+
+
+
+
+			</div>
+
+		</div>
+	}
+	@if (Model.RequestType == "Test case")
+	{
+		<div class="border p-3 mt-4">
+
+			<!--HEADER-->
+			<div class="row pb-2">
+				<h2 class="text-primary">Edit Ticket</h2>
+				<hr />
+			</div>
+
+			<!--Title-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Title" class="p-0"></label>
+				<input asp-for="Title" readonly class="form-control" style="background-color:lightgrey" />
+			</div>
+
+			<!--ID-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Id" class="p-0"></label>
+				<input asp-for="Id" readonly type="text" class="form-control" style="background-color:lightgrey" />
+			</div>
+
+			<!--Request type-->
+			<div>
+				<label asp-for="RequestType" class="p-0">Request Type</label>
+
+
+				<select asp-for="RequestType" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+					<option value="Defects">Defects</option>
+					<option value="Feature request">Feature request</option>
+					<option value="Test case">Test case</option>
+					<option value="Task">Task</option>
+					<option value="Improvement">Improvement</option>
+					<option value="Documentation">Documentation</option>
+					<option value="Support">Support</option>
+					<option value="Epic">Epic</option>
+					<option value="Research">Research</option>
+
+				</select>
+
+
+
+			</div>
+
+			<!--Priority-->
+			<div>
+
+				<label asp-for="Priority" class="p-0"></label>
+
+				<select asp-for="Priority" class="form-control">
+					<option value="P1: Less than 4hrs">P1: Less than 4hrs</option>
+					<option value="P2: 4hrs to 24hrs">P2: 4hrs to 24hrs</option>
+					<option value="P3: 24hrs to 3days">P3: 24hrs to 3days</option>
+					<option value="P4: 3days to 5days">P4: 3days to 5days</option>
+					<option value="P5: More than 5days">P5: More than 5days</option>
+				</select>
+
+
+			</div>
+
+			<!--Severity-->
+			<div>
+
+
+				<label asp-for="Severity" class="p-0"></label>
+				<select asp-for="Severity" class="form-control">
+					<option value="1: Minor">1: Minor</option>
+					<option value="2: Major">2: Major</option>
+					<option value="3: Critical">3: Critical</option>
+				</select>
+
+
+			</div>
+
+			<!--Summary-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Summary" class="p-0"></label>
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<input asp-for="Summary" type="text" class="form-control" />
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<input asp-for="Summary" readonly type="text" class="form-control" style="background-color:lightgrey" />
+				}
+
+			</div>
+
+			<!--Description-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Description" class="p-0"></label>
+
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<input asp-for="Description" type="text" class="form-control" />
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<input asp-for="Description" readonly type="text" class="form-control" style="background-color:lightgrey" />
+				}
+
+			</div>
+
+			<!--Status-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Status" class="p-0"></label>
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<select asp-for="Status" class="form-control">
+						<option value="OPEN">OPEN</option>
+						<option value="CLOSED">CLOSED</option>
+					</select>
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<select asp-for="Status" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+						<option value="OPEN">OPEN</option>
+						<option value="CLOSED">CLOSED</option>
+					</select>
+				}
+
+
+			</div>
+
+			<!--Resolved or Not-->
+			<div class="mb-3 row p-1">
+				<label asp-for="ResolvedorNot" class="p-0">Resolved or Not</label>
+
+				@if (User.IsInRole(SD.Role_QA))
+				{
+
+					<select asp-for="ResolvedorNot" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+						<option value=true>True</option>
+						<option value=false>False</option>
+					</select>
+
+				}
+
+				@if (User.IsInRole(SD.Role_RD))
+				{
+
+					<select asp-for="ResolvedorNot" class="form-control">
+						<option value=true>True</option>
+						<option value=false>False</option>
+					</select>
+
+				}
+
+			</div>
+
+			<!--Update button-->
+			<div class="row">
+				<div class="col-6">
+					<button type="submit" class="btn btn-success form-control">Update</button>
+				</div>
+				<div class="col-6">
+					<a asp-controller="Category" asp-action="Index" class="btn btn-info form-control">
+						Back to List
+					</a>
+				</div>
+
+
+
+
+			</div>
+
+		</div>
+	}
+	@if (Model.RequestType == "Task")
+	{
+		<div class="border p-3 mt-4">
+
+			<!--HEADER-->
+			<div class="row pb-2">
+				<h2 class="text-primary">Edit Ticket</h2>
+				<hr />
+			</div>
+
+			<!--Title-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Title" class="p-0"></label>
+				<input asp-for="Title" readonly class="form-control" style="background-color:lightgrey" />
+			</div>
+
+			<!--ID-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Id" class="p-0"></label>
+				<input asp-for="Id" readonly type="text" class="form-control" style="background-color:lightgrey" />
+			</div>
+
+			<!--Request type-->
+			<div>
+				<label asp-for="RequestType" class="p-0">Request Type</label>
+
+
+				<select asp-for="RequestType" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+					<option value="Defects">Defects</option>
+					<option value="Feature request">Feature request</option>
+					<option value="Test case">Test case</option>
+					<option value="Task">Task</option>
+					<option value="Improvement">Improvement</option>
+					<option value="Documentation">Documentation</option>
+					<option value="Support">Support</option>
+					<option value="Epic">Epic</option>
+					<option value="Research">Research</option>
+
+				</select>
+
+
+
+			</div>
+
+			<!--Priority-->
+			<div>
+
+				<label asp-for="Priority" class="p-0"></label>
+
+				<select asp-for="Priority" class="form-control">
+					<option value="P1: Less than 4hrs">P1: Less than 4hrs</option>
+					<option value="P2: 4hrs to 24hrs">P2: 4hrs to 24hrs</option>
+					<option value="P3: 24hrs to 3days">P3: 24hrs to 3days</option>
+					<option value="P4: 3days to 5days">P4: 3days to 5days</option>
+					<option value="P5: More than 5days">P5: More than 5days</option>
+				</select>
+
+
+			</div>
+
+			<!--Severity-->
+			<div>
+
+
+				<label asp-for="Severity" class="p-0"></label>
+				<select asp-for="Severity" class="form-control">
+					<option value="1: Minor">1: Minor</option>
+					<option value="2: Major">2: Major</option>
+					<option value="3: Critical">3: Critical</option>
+				</select>
+
+
+			</div>
+
+			<!--Summary-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Summary" class="p-0"></label>
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<input asp-for="Summary" type="text" class="form-control" />
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<input asp-for="Summary" readonly type="text" class="form-control" style="background-color:lightgrey" />
+				}
+
+			</div>
+
+			<!--Description-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Description" class="p-0"></label>
+
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<input asp-for="Description" type="text" class="form-control" />
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<input asp-for="Description" readonly type="text" class="form-control" style="background-color:lightgrey" />
+				}
+
+			</div>
+
+			<!--Status-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Status" class="p-0"></label>
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<select asp-for="Status" class="form-control">
+						<option value="OPEN">OPEN</option>
+						<option value="CLOSED">CLOSED</option>
+					</select>
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<select asp-for="Status" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+						<option value="OPEN">OPEN</option>
+						<option value="CLOSED">CLOSED</option>
+					</select>
+				}
+
+
+			</div>
+
+			<!--Resolved or Not-->
+			<div class="mb-3 row p-1">
+				<label asp-for="ResolvedorNot" class="p-0">Resolved or Not</label>
+
+				@if (User.IsInRole(SD.Role_QA))
+				{
+
+					<select asp-for="ResolvedorNot" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+						<option value=true>True</option>
+						<option value=false>False</option>
+					</select>
+
+				}
+
+				@if (User.IsInRole(SD.Role_RD))
+				{
+
+					<select asp-for="ResolvedorNot" class="form-control">
+						<option value=true>True</option>
+						<option value=false>False</option>
+					</select>
+
+				}
+
+			</div>
+
+			<!--Update button-->
+			<div class="row">
+				<div class="col-6">
+					<button type="submit" class="btn btn-success form-control">Update</button>
+				</div>
+				<div class="col-6">
+					<a asp-controller="Category" asp-action="Index" class="btn btn-info form-control">
+						Back to List
+					</a>
+				</div>
+
+
+
+
+			</div>
+
+		</div>
+	}
+	@if (Model.RequestType == "Improvement")
+	{
+		<div class="border p-3 mt-4">
+
+			<!--HEADER-->
+			<div class="row pb-2">
+				<h2 class="text-primary">Edit Ticket</h2>
+				<hr />
+			</div>
+
+			<!--Title-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Title" class="p-0"></label>
+				<input asp-for="Title" readonly class="form-control" style="background-color:lightgrey" />
+			</div>
+
+			<!--ID-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Id" class="p-0"></label>
+				<input asp-for="Id" readonly type="text" class="form-control" style="background-color:lightgrey" />
+			</div>
+
+			<!--Request type-->
+			<div>
+				<label asp-for="RequestType" class="p-0">Request Type</label>
+
+
+				<select asp-for="RequestType" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+					<option value="Defects">Defects</option>
+					<option value="Feature request">Feature request</option>
+					<option value="Test case">Test case</option>
+					<option value="Task">Task</option>
+					<option value="Improvement">Improvement</option>
+					<option value="Documentation">Documentation</option>
+					<option value="Support">Support</option>
+					<option value="Epic">Epic</option>
+					<option value="Research">Research</option>
+
+				</select>
+
+
+
+			</div>
+
+			<!--Priority-->
+			<div>
+
+				<label asp-for="Priority" class="p-0"></label>
+
+				<select asp-for="Priority" class="form-control">
+					<option value="P1: Less than 4hrs">P1: Less than 4hrs</option>
+					<option value="P2: 4hrs to 24hrs">P2: 4hrs to 24hrs</option>
+					<option value="P3: 24hrs to 3days">P3: 24hrs to 3days</option>
+					<option value="P4: 3days to 5days">P4: 3days to 5days</option>
+					<option value="P5: More than 5days">P5: More than 5days</option>
+				</select>
+
+
+			</div>
+
+			<!--Severity-->
+			<div>
+
+
+				<label asp-for="Severity" class="p-0"></label>
+				<select asp-for="Severity" class="form-control">
+					<option value="1: Minor">1: Minor</option>
+					<option value="2: Major">2: Major</option>
+					<option value="3: Critical">3: Critical</option>
+				</select>
+
+
+			</div>
+
+			<!--Summary-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Summary" class="p-0"></label>
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<input asp-for="Summary" type="text" class="form-control" />
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<input asp-for="Summary" readonly type="text" class="form-control" style="background-color:lightgrey" />
+				}
+
+			</div>
+
+			<!--Description-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Description" class="p-0"></label>
+
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<input asp-for="Description" type="text" class="form-control" />
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<input asp-for="Description" readonly type="text" class="form-control" style="background-color:lightgrey" />
+				}
+
+			</div>
+
+			<!--Status-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Status" class="p-0"></label>
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<select asp-for="Status" class="form-control">
+						<option value="OPEN">OPEN</option>
+						<option value="CLOSED">CLOSED</option>
+					</select>
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<select asp-for="Status" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+						<option value="OPEN">OPEN</option>
+						<option value="CLOSED">CLOSED</option>
+					</select>
+				}
+
+
+			</div>
+
+			<!--Resolved or Not-->
+			<div class="mb-3 row p-1">
+				<label asp-for="ResolvedorNot" class="p-0">Resolved or Not</label>
+
+				@if (User.IsInRole(SD.Role_QA))
+				{
+
+					<select asp-for="ResolvedorNot" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+						<option value=true>True</option>
+						<option value=false>False</option>
+					</select>
+
+				}
+
+				@if (User.IsInRole(SD.Role_RD))
+				{
+
+					<select asp-for="ResolvedorNot" class="form-control">
+						<option value=true>True</option>
+						<option value=false>False</option>
+					</select>
+
+				}
+
+			</div>
+
+			<!--Update button-->
+			<div class="row">
+				<div class="col-6">
+					<button type="submit" class="btn btn-success form-control">Update</button>
+				</div>
+				<div class="col-6">
+					<a asp-controller="Category" asp-action="Index" class="btn btn-info form-control">
+						Back to List
+					</a>
+				</div>
+
+
+
+
+			</div>
+
+		</div>
+	}
+	@if (Model.RequestType == "Documentation")
+	{
+		<div class="border p-3 mt-4">
+
+			<!--HEADER-->
+			<div class="row pb-2">
+				<h2 class="text-primary">Edit Ticket</h2>
+				<hr />
+			</div>
+
+			<!--Title-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Title" class="p-0"></label>
+				<input asp-for="Title" readonly class="form-control" style="background-color:lightgrey" />
+			</div>
+
+			<!--ID-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Id" class="p-0"></label>
+				<input asp-for="Id" readonly type="text" class="form-control" style="background-color:lightgrey" />
+			</div>
+
+			<!--Request type-->
+			<div>
+				<label asp-for="RequestType" class="p-0">Request Type</label>
+
+
+				<select asp-for="RequestType" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+					<option value="Defects">Defects</option>
+					<option value="Feature request">Feature request</option>
+					<option value="Test case">Test case</option>
+					<option value="Task">Task</option>
+					<option value="Improvement">Improvement</option>
+					<option value="Documentation">Documentation</option>
+					<option value="Support">Support</option>
+					<option value="Epic">Epic</option>
+					<option value="Research">Research</option>
+
+				</select>
+
+
+
+			</div>
+
+			<!--Priority-->
+			<div>
+
+				<label asp-for="Priority" class="p-0"></label>
+
+				<select asp-for="Priority" class="form-control">
+					<option value="P1: Less than 4hrs">P1: Less than 4hrs</option>
+					<option value="P2: 4hrs to 24hrs">P2: 4hrs to 24hrs</option>
+					<option value="P3: 24hrs to 3days">P3: 24hrs to 3days</option>
+					<option value="P4: 3days to 5days">P4: 3days to 5days</option>
+					<option value="P5: More than 5days">P5: More than 5days</option>
+				</select>
+
+
+			</div>
+
+			<!--Severity-->
+			<div>
+
+
+				<label asp-for="Severity" class="p-0"></label>
+				<select asp-for="Severity" class="form-control">
+					<option value="1: Minor">1: Minor</option>
+					<option value="2: Major">2: Major</option>
+					<option value="3: Critical">3: Critical</option>
+				</select>
+
+
+			</div>
+
+			<!--Summary-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Summary" class="p-0"></label>
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<input asp-for="Summary" type="text" class="form-control" />
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<input asp-for="Summary" readonly type="text" class="form-control" style="background-color:lightgrey" />
+				}
+
+			</div>
+
+			<!--Description-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Description" class="p-0"></label>
+
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<input asp-for="Description" type="text" class="form-control" />
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<input asp-for="Description" readonly type="text" class="form-control" style="background-color:lightgrey" />
+				}
+
+			</div>
+
+			<!--Status-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Status" class="p-0"></label>
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<select asp-for="Status" class="form-control">
+						<option value="OPEN">OPEN</option>
+						<option value="CLOSED">CLOSED</option>
+					</select>
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<select asp-for="Status" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+						<option value="OPEN">OPEN</option>
+						<option value="CLOSED">CLOSED</option>
+					</select>
+				}
+
+
+			</div>
+
+			<!--Resolved or Not-->
+			<div class="mb-3 row p-1">
+				<label asp-for="ResolvedorNot" class="p-0">Resolved or Not</label>
+
+				@if (User.IsInRole(SD.Role_QA))
+				{
+
+					<select asp-for="ResolvedorNot" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+						<option value=true>True</option>
+						<option value=false>False</option>
+					</select>
+
+				}
+
+				@if (User.IsInRole(SD.Role_RD))
+				{
+
+					<select asp-for="ResolvedorNot" class="form-control">
+						<option value=true>True</option>
+						<option value=false>False</option>
+					</select>
+
+				}
+
+			</div>
+
+			<!--Update button-->
+			<div class="row">
+				<div class="col-6">
+					<button type="submit" class="btn btn-success form-control">Update</button>
+				</div>
+				<div class="col-6">
+					<a asp-controller="Category" asp-action="Index" class="btn btn-info form-control">
+						Back to List
+					</a>
+				</div>
+
+
+
+
+			</div>
+
+		</div>
+	}
+	@if (Model.RequestType == "Support")
+	{
+		<div class="border p-3 mt-4">
+
+			<!--HEADER-->
+			<div class="row pb-2">
+				<h2 class="text-primary">Edit Ticket</h2>
+				<hr />
+			</div>
+
+			<!--Title-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Title" class="p-0"></label>
+				<input asp-for="Title" readonly class="form-control" style="background-color:lightgrey" />
+			</div>
+
+			<!--ID-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Id" class="p-0"></label>
+				<input asp-for="Id" readonly type="text" class="form-control" style="background-color:lightgrey" />
+			</div>
+
+			<!--Request type-->
+			<div>
+				<label asp-for="RequestType" class="p-0">Request Type</label>
+
+
+				<select asp-for="RequestType" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+					<option value="Defects">Defects</option>
+					<option value="Feature request">Feature request</option>
+					<option value="Test case">Test case</option>
+					<option value="Task">Task</option>
+					<option value="Improvement">Improvement</option>
+					<option value="Documentation">Documentation</option>
+					<option value="Support">Support</option>
+					<option value="Epic">Epic</option>
+					<option value="Research">Research</option>
+
+				</select>
+
+
+
+			</div>
+
+			<!--Priority-->
+			<div>
+
+				<label asp-for="Priority" class="p-0"></label>
+
+				<select asp-for="Priority" class="form-control">
+					<option value="P1: Less than 4hrs">P1: Less than 4hrs</option>
+					<option value="P2: 4hrs to 24hrs">P2: 4hrs to 24hrs</option>
+					<option value="P3: 24hrs to 3days">P3: 24hrs to 3days</option>
+					<option value="P4: 3days to 5days">P4: 3days to 5days</option>
+					<option value="P5: More than 5days">P5: More than 5days</option>
+				</select>
+
+
+			</div>
+
+			<!--Severity-->
+			<div>
+
+
+				<label asp-for="Severity" class="p-0"></label>
+				<select asp-for="Severity" class="form-control">
+					<option value="1: Minor">1: Minor</option>
+					<option value="2: Major">2: Major</option>
+					<option value="3: Critical">3: Critical</option>
+				</select>
+
+
+			</div>
+
+			<!--Summary-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Summary" class="p-0"></label>
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<input asp-for="Summary" type="text" class="form-control" />
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<input asp-for="Summary" readonly type="text" class="form-control" style="background-color:lightgrey" />
+				}
+
+			</div>
+
+			<!--Description-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Description" class="p-0"></label>
+
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<input asp-for="Description" type="text" class="form-control" />
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<input asp-for="Description" readonly type="text" class="form-control" style="background-color:lightgrey" />
+				}
+
+			</div>
+
+			<!--Status-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Status" class="p-0"></label>
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<select asp-for="Status" class="form-control">
+						<option value="OPEN">OPEN</option>
+						<option value="CLOSED">CLOSED</option>
+					</select>
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<select asp-for="Status" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+						<option value="OPEN">OPEN</option>
+						<option value="CLOSED">CLOSED</option>
+					</select>
+				}
+
+
+			</div>
+
+			<!--Resolved or Not-->
+			<div class="mb-3 row p-1">
+				<label asp-for="ResolvedorNot" class="p-0">Resolved or Not</label>
+
+				@if (User.IsInRole(SD.Role_QA))
+				{
+
+					<select asp-for="ResolvedorNot" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+						<option value=true>True</option>
+						<option value=false>False</option>
+					</select>
+
+				}
+
+				@if (User.IsInRole(SD.Role_RD))
+				{
+
+					<select asp-for="ResolvedorNot" class="form-control">
+						<option value=true>True</option>
+						<option value=false>False</option>
+					</select>
+
+				}
+
+			</div>
+
+			<!--Update button-->
+			<div class="row">
+				<div class="col-6">
+					<button type="submit" class="btn btn-success form-control">Update</button>
+				</div>
+				<div class="col-6">
+					<a asp-controller="Category" asp-action="Index" class="btn btn-info form-control">
+						Back to List
+					</a>
+				</div>
+
+
+
+
+			</div>
+
+		</div>
+	}
+	@if (Model.RequestType == "Epic")
+	{
+		<div class="border p-3 mt-4">
+
+			<!--HEADER-->
+			<div class="row pb-2">
+				<h2 class="text-primary">Edit Ticket</h2>
+				<hr />
+			</div>
+
+			<!--Title-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Title" class="p-0"></label>
+				<input asp-for="Title" readonly class="form-control" style="background-color:lightgrey" />
+			</div>
+
+			<!--ID-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Id" class="p-0"></label>
+				<input asp-for="Id" readonly type="text" class="form-control" style="background-color:lightgrey" />
+			</div>
+
+			<!--Request type-->
+			<div>
+				<label asp-for="RequestType" class="p-0">Request Type</label>
+
+
+				<select asp-for="RequestType" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+					<option value="Defects">Defects</option>
+					<option value="Feature request">Feature request</option>
+					<option value="Test case">Test case</option>
+					<option value="Task">Task</option>
+					<option value="Improvement">Improvement</option>
+					<option value="Documentation">Documentation</option>
+					<option value="Support">Support</option>
+					<option value="Epic">Epic</option>
+					<option value="Research">Research</option>
+
+				</select>
+
+
+
+			</div>
+
+			<!--Priority-->
+			<div>
+
+				<label asp-for="Priority" class="p-0"></label>
+
+				<select asp-for="Priority" class="form-control">
+					<option value="P1: Less than 4hrs">P1: Less than 4hrs</option>
+					<option value="P2: 4hrs to 24hrs">P2: 4hrs to 24hrs</option>
+					<option value="P3: 24hrs to 3days">P3: 24hrs to 3days</option>
+					<option value="P4: 3days to 5days">P4: 3days to 5days</option>
+					<option value="P5: More than 5days">P5: More than 5days</option>
+				</select>
+
+
+			</div>
+
+			<!--Severity-->
+			<div>
+
+
+				<label asp-for="Severity" class="p-0"></label>
+				<select asp-for="Severity" class="form-control">
+					<option value="1: Minor">1: Minor</option>
+					<option value="2: Major">2: Major</option>
+					<option value="3: Critical">3: Critical</option>
+				</select>
+
+
+			</div>
+
+			<!--Summary-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Summary" class="p-0"></label>
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<input asp-for="Summary" type="text" class="form-control" />
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<input asp-for="Summary" readonly type="text" class="form-control" style="background-color:lightgrey" />
+				}
+
+			</div>
+
+			<!--Description-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Description" class="p-0"></label>
+
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<input asp-for="Description" type="text" class="form-control" />
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<input asp-for="Description" readonly type="text" class="form-control" style="background-color:lightgrey" />
+				}
+
+			</div>
+
+			<!--Status-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Status" class="p-0"></label>
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<select asp-for="Status" class="form-control">
+						<option value="OPEN">OPEN</option>
+						<option value="CLOSED">CLOSED</option>
+					</select>
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<select asp-for="Status" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+						<option value="OPEN">OPEN</option>
+						<option value="CLOSED">CLOSED</option>
+					</select>
+				}
+
+
+			</div>
+
+			<!--Resolved or Not-->
+			<div class="mb-3 row p-1">
+				<label asp-for="ResolvedorNot" class="p-0">Resolved or Not</label>
+
+				@if (User.IsInRole(SD.Role_QA))
+				{
+
+					<select asp-for="ResolvedorNot" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+						<option value=true>True</option>
+						<option value=false>False</option>
+					</select>
+
+				}
+
+				@if (User.IsInRole(SD.Role_RD))
+				{
+
+					<select asp-for="ResolvedorNot" class="form-control">
+						<option value=true>True</option>
+						<option value=false>False</option>
+					</select>
+
+				}
+
+			</div>
+
+			<!--Update button-->
+			<div class="row">
+				<div class="col-6">
+					<button type="submit" class="btn btn-success form-control">Update</button>
+				</div>
+				<div class="col-6">
+					<a asp-controller="Category" asp-action="Index" class="btn btn-info form-control">
+						Back to List
+					</a>
+				</div>
+
+
+
+
+			</div>
+
+		</div>
+	}
+	@if (Model.RequestType == "Research")
+	{
+		<div class="border p-3 mt-4">
+
+			<!--HEADER-->
+			<div class="row pb-2">
+				<h2 class="text-primary">Edit Ticket</h2>
+				<hr />
+			</div>
+
+			<!--Title-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Title" class="p-0"></label>
+				<input asp-for="Title" readonly class="form-control" style="background-color:lightgrey" />
+			</div>
+
+			<!--ID-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Id" class="p-0"></label>
+				<input asp-for="Id" readonly type="text" class="form-control" style="background-color:lightgrey" />
+			</div>
+
+			<!--Request type-->
+			<div>
+				<label asp-for="RequestType" class="p-0">Request Type</label>
+
+
+				<select asp-for="RequestType" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+					<option value="Defects">Defects</option>
+					<option value="Feature request">Feature request</option>
+					<option value="Test case">Test case</option>
+					<option value="Task">Task</option>
+					<option value="Improvement">Improvement</option>
+					<option value="Documentation">Documentation</option>
+					<option value="Support">Support</option>
+					<option value="Epic">Epic</option>
+					<option value="Research">Research</option>
+
+				</select>
+
+
+
+			</div>
+
+			<!--Priority-->
+			<div>
+
+				<label asp-for="Priority" class="p-0"></label>
+
+				<select asp-for="Priority" class="form-control">
+					<option value="P1: Less than 4hrs">P1: Less than 4hrs</option>
+					<option value="P2: 4hrs to 24hrs">P2: 4hrs to 24hrs</option>
+					<option value="P3: 24hrs to 3days">P3: 24hrs to 3days</option>
+					<option value="P4: 3days to 5days">P4: 3days to 5days</option>
+					<option value="P5: More than 5days">P5: More than 5days</option>
+				</select>
+
+
+			</div>
+
+			<!--Severity-->
+			<div>
+
+
+				<label asp-for="Severity" class="p-0"></label>
+				<select asp-for="Severity" class="form-control">
+					<option value="1: Minor">1: Minor</option>
+					<option value="2: Major">2: Major</option>
+					<option value="3: Critical">3: Critical</option>
+				</select>
+
+
+			</div>
+
+			<!--Summary-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Summary" class="p-0"></label>
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<input asp-for="Summary" type="text" class="form-control" />
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<input asp-for="Summary" readonly type="text" class="form-control" style="background-color:lightgrey" />
+				}
+
+			</div>
+
+			<!--Description-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Description" class="p-0"></label>
+
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<input asp-for="Description" type="text" class="form-control" />
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<input asp-for="Description" readonly type="text" class="form-control" style="background-color:lightgrey" />
+				}
+
+			</div>
+
+			<!--Status-->
+			<div class="mb-3 row p-1">
+				<label asp-for="Status" class="p-0"></label>
+				@if (User.IsInRole(SD.Role_QA))
+				{
+					<select asp-for="Status" class="form-control">
+						<option value="OPEN">OPEN</option>
+						<option value="CLOSED">CLOSED</option>
+					</select>
+				}
+				@if (User.IsInRole(SD.Role_RD))
+				{
+					<select asp-for="Status" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+						<option value="OPEN">OPEN</option>
+						<option value="CLOSED">CLOSED</option>
+					</select>
+				}
+
+
+			</div>
+
+			<!--Resolved or Not-->
+			<div class="mb-3 row p-1">
+				<label asp-for="ResolvedorNot" class="p-0">Resolved or Not</label>
+
+				@if (User.IsInRole(SD.Role_QA))
+				{
+
+					<select asp-for="ResolvedorNot" class="form-control" style="cursor: not-allowed; pointer-events: none;background-color:lightgrey">
+						<option value=true>True</option>
+						<option value=false>False</option>
+					</select>
+
+				}
+
+				@if (User.IsInRole(SD.Role_RD))
+				{
+
+					<select asp-for="ResolvedorNot" class="form-control">
+						<option value=true>True</option>
+						<option value=false>False</option>
+					</select>
+
+				}
+
+			</div>
+
+			<!--Update button-->
+			<div class="row">
+				<div class="col-6">
+					<button type="submit" class="btn btn-success form-control">Update</button>
+				</div>
+				<div class="col-6">
+					<a asp-controller="Category" asp-action="Index" class="btn btn-info form-control">
+						Back to List
+					</a>
+				</div>
+
+
+
+
+			</div>
+
+		</div>
+	}
+
+
 
 </form>
