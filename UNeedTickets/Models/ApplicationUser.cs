@@ -1,33 +1,36 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+using DocumentFormat.OpenXml.Spreadsheet;
+using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace UNeedTickets.Models
 {
-    public class ApplicationUser: IdentityUser, IEnumerable
+	public class ApplicationUser : IdentityUser //IEnumerable<ApplicationUser>
 	{
-        [PersonalData]
-        [Column(TypeName ="nvarchar(100)")]
-        public string AccountType { get; set; }
+		//List<ApplicationUser> AppUsers { get; }
 
-        [Required]
-        public string Name { get; set; }
+		[PersonalData]
+		[Column(TypeName = "nvarchar(100)")]
+		public string AccountType { get; set; }
 
-        public string? StreetAddress { get; set; }
-        public string? City { get; set; }
-        public string? State { get; set; }
-        public string? PostalCode { get; set; }
+		[Required]
+		public string Name { get; set; }
 
-		public IEnumerator GetEnumerator()
-		{
-			throw new NotImplementedException();
-		}
+		public string? StreetAddress { get; set; }
+		public string? City { get; set; }
+		public string? State { get; set; }
+		public string? PostalCode { get; set; }
 
-		
+		//public IEnumerator<ApplicationUser> GetEnumerator()
+	//	{
+	//		return AppUsers.GetEnumerator();
+	//	}
+
+		//IEnumerator IEnumerable.GetEnumerator()
+	//	{
+	//		return GetEnumerator();
+	//	}
 	}
 }

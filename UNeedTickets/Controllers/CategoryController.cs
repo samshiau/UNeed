@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using UNeedTickets.Data;
 using UNeedTickets.Models;
@@ -16,8 +18,9 @@ namespace UNeedTickets.Controllers
         }
 
 		public IActionResult NewUserAccounts()
-		{ 
-			return View();	
+		{
+			List<ApplicationUser> users= _db.ApplicationUser.ToList();
+			return View(users);	
 		}
 
 		public IActionResult Register() 

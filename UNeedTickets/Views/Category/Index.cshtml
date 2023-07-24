@@ -3,100 +3,100 @@
 @using UNeedTickets.Models
 
 
-@if (User.Identity.IsAuthenticated){
-<div class="container">
-	<div class="row pt-4 pb-3">
-		<div class="col-6">
-			<h2 class="text-primary">
-				Existing Tickets
-			</h2>
-		</div>
-			@if (User.IsInRole(SD.Role_QA) || User.IsInRole(SD.Role_Ad))
-		{
-			<div class="col-6 text-end">
-				<a asp-controller="Category" asp-action="Create" class="btn btn-success">
-					<i class="bi bi-plus-circle"></i> Create New Ticket
-				</a>
+@if (User.Identity.IsAuthenticated) {
+	<div class="container">
+		<div class="row pt-4 pb-3">
+			<div class="col-6">
+				<h2 class="text-primary">
+					Existing Tickets
+				</h2>
 			</div>
-		}
+			@if (User.IsInRole(SD.Role_QA) || User.IsInRole(SD.Role_Ad))
+			{
+				<div class="col-6 text-end">
+					<a asp-controller="Category" asp-action="Create" class="btn btn-success">
+						<i class="bi bi-plus-circle"></i> Create New Ticket
+					</a>
+				</div>
+			}
 
-	</div>
+		</div>
 
-<table class="table table-bordered table-striped">
-	<thead>
-	<tr>
-		<th>
-			ID 
-		</th>
-		<th>
-			Title
-		</th>
-		<th>Request Type</th>
-		<th>Priority</th>
-		<th>Severity</th>
-		<th>Status</th>
-		<th>Options</th>
-	</tr>
-	</thead>
-	<tbody>
-	
-		@foreach(var obj in Model)
-		{
-			<tr style="height:40px;">
-				<td>@obj.Id</td>
-				<td>@obj.Title</td>
-				<td>@obj.RequestType</td>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>
+						ID 
+					</th>
+					<th>
+						Title
+					</th>
+					<th>Request Type</th>
+					<th>Priority</th>
+					<th>Severity</th>
+					<th>Status</th>
+					<th>Options</th>
+				</tr>
+			</thead>
+			<tbody>
 
-				@if (obj.Priority == "P1: Less than 4hrs")
+				@foreach (var obj in Model)
 				{
+					<tr style="height:40px;">
+						<td>@obj.Id</td>
+						<td>@obj.Title</td>
+						<td>@obj.RequestType</td>
+
+						@if (obj.Priority == "P1: Less than 4hrs")
+						{
 							<td style="background-color: tomato;color:white;border: 4px solid white;">@obj.Priority</td>
-				}
+						}
 
-				@if (obj.Priority == "P2: 4hrs to 24hrs")
-				{
+						@if (obj.Priority == "P2: 4hrs to 24hrs")
+						{
 							<td style="background-color: orange;border: 4px solid white;">@obj.Priority</td>
-				}
+						}
 
-				@if (obj.Priority == "P3: 24hrs to 3days")
-				{
+						@if (obj.Priority == "P3: 24hrs to 3days")
+						{
 							<td style="background-color: yellow;border: 4px solid white;">@obj.Priority</td>
-				}
+						}
 
-				@if (obj.Priority == "P4: 3days to 5days")
-				{
+						@if (obj.Priority == "P4: 3days to 5days")
+						{
 							<td style="background-color: deepskyblue;border: 4px solid white;">@obj.Priority</td>
-				}
+						}
 
-				@if (obj.Priority == "P5: More than 5days")
-				{
+						@if (obj.Priority == "P5: More than 5days")
+						{
 							<td style="background-color: lawngreen;border: 4px solid white;">@obj.Priority</td>
-				}
+						}
 
 
-				@if(obj.Severity=="1: Minor")
-				{
+						@if (obj.Severity == "1: Minor")
+						{
 							<td style="background-color: yellow;border: 4px solid white;">@obj.Severity</td>
-				}
-				@if(obj.Severity == "2: Major")
-				{
+						}
+						@if (obj.Severity == "2: Major")
+						{
 							<td style="background-color: orange;border: 4px solid white;">@obj.Severity</td>
-				}
-				@if(obj.Severity == "3: Critical")
-				{
+						}
+						@if (obj.Severity == "3: Critical")
+						{
 							<td style="background-color: tomato;color:white;border: 4px solid white;">@obj.Severity</td>
-				}
-						
-				<td>@obj.Status</td>
+						}
+
+						<td>@obj.Status</td>
 
 
-				<td>
-					<div class="w-75 btn-group" role="group">
+						<td>
+							<div class="w-75 btn-group" role="group">
 								<a asp-controller="Category" asp-action="Edit" asp-route-Id="@obj.Id" class="btn btn-info mx-2" style="height: 30px;display: flex; align-items: center; justify-content: center;">
-								<i class="bi bi-pencil-square"></i> Edit
-						</a>
+									<i class="bi bi-pencil-square"></i> Edit
+								</a>
 
-							@if (User.IsInRole(SD.Role_QA))
-							{
+								@if (User.IsInRole(SD.Role_QA) || User.IsInRole(SD.Role_Ad))
+										{
 									<a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2" style="height: 30px;display: flex; align-items: center; justify-content: center;">
 									<i class="bi bi-trash3"></i> Delete
 								</a>
