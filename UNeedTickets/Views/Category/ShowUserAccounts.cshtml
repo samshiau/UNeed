@@ -1,13 +1,12 @@
-﻿@page
-@using Microsoft.AspNetCore.Identity;
-@using UNeedTickets.Models
-
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
 @{
 }
 
 @model List<IdentityUser>
-
-
+@using Microsoft.AspNetCore.Identity;
+@using UNeedTickets.Models
 
 <style>
 	.custom-row {
@@ -20,7 +19,7 @@
 	<div class="row pt-4 pb-3 custom-row">
 		<div class="col-6">
 			<h2 class="text-primary">
-			Current Accounts
+				Current Accounts
 			</h2>
 		</div>
 
@@ -35,25 +34,21 @@
 				<th>
 					Username
 				</th>
-				<th>
-					Role
-				</th>
 				
+				<th>
+					Action
+				</th>
 			</tr>
 		</thead>
 		<tbody>
-			@foreach(var obj in Model){
-			<td> C </td>
-			<td> Coming Soon </td>
+			@foreach (var obj in Model)
+			{
+				<tr>
+					<td> @obj.UserName </td>
+					
+					<td> Coming Soon </td>
+				</tr>
 			}
-
-
-
 		</tbody>
 	</table>
-
-
-
-
-
 </div>

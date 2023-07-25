@@ -8,13 +8,17 @@
 
   <ItemGroup>
     <Compile Remove="Views\Category\Accounts.cshtml.cs" />
+    <Compile Remove="Views\Category\AllUserAccounts.cshtml.cs" />
     <Compile Remove="Views\Category\Index1.cshtml.cs" />
+    <Compile Remove="Views\Category\NewUserAccounts.cshtml.cs" />
     <Compile Remove="Views\Category\UserAccounts.cshtml.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="Views\Category\Accounts.cshtml" />
+    <Content Remove="Views\Category\AllUserAccounts.cshtml" />
     <Content Remove="Views\Category\Index1.cshtml" />
+    <Content Remove="Views\Category\NewUserAccounts.cshtml" />
     <Content Remove="Views\Category\UserAccounts.cshtml" />
   </ItemGroup>
 

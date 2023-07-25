@@ -17,9 +17,9 @@ namespace UNeedTickets.Controllers
             _db = db;
         }
 
-		public IActionResult NewUserAccounts()
+		public IActionResult ShowUserAccounts()
 		{
-			List<ApplicationUser> users= _db.ApplicationUser.ToList();
+			List<IdentityUser> users= _db.Users.ToList();
 			return View(users);	
 		}
 
