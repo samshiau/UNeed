@@ -28,10 +28,7 @@ namespace UNeedTickets.Controllers
 			return View();
 		}
 
-	//	public IActionResult Inspect()
-	//	{
-	//		return View();
-	//	}
+		
 
 		public IActionResult Index()
         {

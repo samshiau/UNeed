@@ -21,8 +21,8 @@
 			}
 
 		</div>
-
-		<table class="table table-bordered table-striped">
+		<div style="max-height: 690px; overflow-y: auto;">
+			<table class="table table-bordered table-striped">
 			<thead>
 				<tr>
 					<th>
@@ -32,8 +32,8 @@
 						Title
 					</th>
 					<th>Request Type</th>
-					<th>Priority</th>
-					<th>Severity</th>
+						<th width="240">Priority</th>
+					<th width="150">Severity</th>
 					<th>Status</th>
 					<th>Options</th>
 				</tr>
@@ -75,11 +75,11 @@
 
 						@if (obj.Severity == "1: Minor")
 						{
-							<td style="background-color: yellow;border: 4px solid white;">@obj.Severity</td>
+							<td style="background-color: lawngreen;border: 4px solid white;">@obj.Severity</td>
 						}
 						@if (obj.Severity == "2: Major")
 						{
-							<td style="background-color: orange;border: 4px solid white;">@obj.Severity</td>
+							<td style="background-color: yellow;border: 4px solid white;">@obj.Severity</td>
 						}
 						@if (obj.Severity == "3: Critical")
 						{
@@ -108,11 +108,9 @@
 		}
 		
 
-
-
 	</tbody>
 </table>
-
+		</div>
 	</div>
 
 }

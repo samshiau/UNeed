@@ -14,18 +14,19 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-info bg-info border-bottom box-shadow mb-3">
             <div class="container-fluid" style="display: flex; justify-content: center; align-items: center;">
                 <div style="display: flex; align-items: center; ">
+
+                    @if (User.IsInRole(SD.Role_Ad))
+                    {
+                        <a class="navbar-brand" asp-area="" asp-controller="Category" asp-action="ShowUserAccounts" style="font-size:17px;color:white">Manage User Accounts</a>
+                    }
+                    
                     <a class="navbar-brand" asp-area="" asp-controller="Category" asp-action="Index" style="font-size: 30px;color:white">UNeedTickets</a>
 
-                <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>  -->
+                
                 
                     <partial name="_LoginPartial" />
 
-                @if (User.IsInRole(SD.Role_Ad)){
-                    <a class="navbar-brand" asp-area="" asp-controller="Category" asp-action="ShowUserAccounts" style="font-size:20px;color:white">Manage User Accounts</a>
-                }
+                    
                 </div>
             </div>
         </nav>
@@ -36,9 +37,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer bg-primary text-muted">
-        <div class="container">
-            &copy; 2023 - UNeedTickets - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top footer bg-info text-muted">
+        <div class="container" style="color: white; text-align:center">
+            &copy; 2023 - UNeedTickets - <a asp-area="" asp-controller="Home" asp-action="AboutUNeed" style="color: white;">About UNeed</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
