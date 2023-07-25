@@ -34,7 +34,9 @@
 				<th>
 					Username
 				</th>
-				
+				<th>
+					Role
+				</th>
 				<th>
 					Action
 				</th>
@@ -45,8 +47,15 @@
 			{
 				<tr>
 					<td> @obj.UserName </td>
-					
-					<td> Coming Soon </td>
+					<td>Coming soon</td>
+					<td>
+						<div class="w-75 btn-group" role="group">
+							<a asp-controller="Category" asp-action="Inspect" asp-route-Id="@obj.Id" class="btn btn-info mx-2" style="width: 40px;height:30px;display: flex; align-items: center; justify-content: center;">
+								<i class="bi bi-pencil-square"></i> Inspect
+							</a>
+						</div>
+						
+					</td>
 				</tr>
 			}
 		</tbody>

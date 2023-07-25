@@ -28,6 +28,11 @@ namespace UNeedTickets.Controllers
 			return View();
 		}
 
+	//	public IActionResult Inspect()
+	//	{
+	//		return View();
+	//	}
+
 		public IActionResult Index()
         {
 			List<Tickets> objCategoryList = _db.Tickets.ToList();
@@ -50,6 +55,13 @@ namespace UNeedTickets.Controllers
             Tickets? ticketFromDb= _db.Tickets.Find(id);
 			return View(ticketFromDb);
 		}
+
+		public IActionResult Inspect(string id)
+		{
+			IdentityUser? user = _db.Users.Find(id);
+			return View(user);
+		}
+
 		[HttpPost]
 		public IActionResult Edit(Tickets obj)
 		{

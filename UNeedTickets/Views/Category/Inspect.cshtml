@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IdentityUser
+@using Microsoft.AspNetCore.Identity;
+@using UNeedTickets.Models
+
+<form method="post" style="display: flex; justify-content: center;">
+
+	<div class="border p-3 mt-4" style="width:600px;">
+
+	<!--HEADER-->
+	<div class="row pb-2">
+			<h2 class="text-primary" style="text-align: center;">User Account</h2>
+		<hr />
+	</div>
+
+
+	<div class="mb-3 row p-1">
+		<label asp-for="UserName" class="p-0"></label>
+			<input asp-for="UserName" readonly class="form-control" style="background-color:lightgrey" />
+	</div>
+
+	<div class="mb-3 row p-1">
+		<label class="p-0">Role</label>
+		<input readonly class="form-control" style="background-color:lightgrey" />
+	</div>
+
+		<div class="row" style="display: flex; justify-content: center; align-items: center;">
+			<div class="col-6 text-center">
+				<a asp-controller="Category" asp-action="ShowUserAccounts" class="btn btn-info border form-control">
+					Back to accounts
+				</a>
+			</div>
+		</div>
+
+</div>
+
+</form>
