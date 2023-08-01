@@ -28,14 +28,11 @@
 		</div>
 	</div>
 
-	<table class="table table-bordered table-striped">
+	<table class="table table-bordered table-striped" style="width:1200px">
 		<thead>
 			<tr>
 				<th>
 					Username
-				</th>
-				<th>
-					Role
 				</th>
 				<th>
 					Action
@@ -47,7 +44,6 @@
 			{
 				<tr>
 					<td> @obj.UserName </td>
-					<td>Coming soon</td>
 					<td>
 						<div class="w-75 btn-group" role="group">
 							<a asp-controller="Category" asp-action="Inspect" asp-route-Id="@obj.Id" class="btn btn-info mx-2" style="width: 40px;height:30px;display: flex; align-items: center; justify-content: center;">

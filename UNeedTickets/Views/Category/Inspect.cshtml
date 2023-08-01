@@ -4,7 +4,7 @@
 @{
 }
 
-@model IdentityUser
+@model InspectViewModel
 @using Microsoft.AspNetCore.Identity;
 @using UNeedTickets.Models
 
@@ -21,13 +21,23 @@
 
 	<div class="mb-3 row p-1">
 		<label asp-for="UserName" class="p-0"></label>
-			<input asp-for="UserName" readonly class="form-control" style="background-color:lightgrey" />
+		<input asp-for="UserName" readonly class="form-control" style="background-color:lightgrey" />
 	</div>
 
+
 	<div class="mb-3 row p-1">
-		<label class="p-0">Role</label>
-		<input readonly class="form-control" style="background-color:lightgrey" />
+		<label class="p-0">Role:</label>
+			<div class="form-control" style="background-color:lightgrey">
+				<ul>
+					@foreach (var roleName in Model.NormalizedName)
+					{
+						<li>@roleName</li>
+					}
+				</ul>
+			</div>
 	</div>
+
+	
 
 		<div class="row" style="display: flex; justify-content: center; align-items: center;">
 			<div class="col-6 text-center">

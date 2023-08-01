@@ -17,8 +17,9 @@ namespace UNeedTickets.Data
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Tickets> Tickets { get; set; }
-
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<UserRoles> UserRoles { get; set; }
+        public DbSet<Roles> Roles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

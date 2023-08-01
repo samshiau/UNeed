@@ -78,7 +78,7 @@ namespace UNeedTickets.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-            //[Required]
+           // [Required]
            // [DataType(DataType.Text)]
           //  [Display(Name ="Account Type")]
           //  public string AccountType { get; set; }
@@ -150,6 +150,7 @@ namespace UNeedTickets.Areas.Identity.Pages.Account
                 var user = CreateUser();
 
                 //account type modification location (removed)
+               // user.AccountType=
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);

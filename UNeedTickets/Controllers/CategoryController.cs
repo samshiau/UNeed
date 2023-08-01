@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Documents;
+using Microsoft.EntityFrameworkCore;
 using UNeedTickets.Data;
 using UNeedTickets.Models;
 
@@ -20,7 +22,8 @@ namespace UNeedTickets.Controllers
 		public IActionResult ShowUserAccounts()
 		{
 			List<IdentityUser> users= _db.Users.ToList();
-			return View(users);	
+            
+            return View(users);	
 		}
 
 		public IActionResult Register() 
@@ -56,7 +59,42 @@ namespace UNeedTickets.Controllers
 		public IActionResult Inspect(string id)
 		{
 			IdentityUser? user = _db.Users.Find(id);
-			return View(user);
+
+			//	var normalizedname = _db.Roles
+			//		.Join
+			//		(
+			//			_db.UserRoles
+			//			,r=> r.Id
+			//			,ur =>ur.RoleId,
+			//			(r, ur) => new { r.NormalizedName, ur.UserId }
+			//		)
+			//		.Where(joined => joined.UserId == id)
+			//		.Select(joined => joined.NormalizedName)
+			//		.ToList();
+
+			var normalizedname = _db.Roles
+				.Join(
+					_db.UserRoles,
+					role => role.Id,
+					userRole => userRole.RoleId,
+					(role, userRole) => new { Role = role, UserRole = userRole }
+				)
+				.Where(joined => joined.UserRole.UserId == id)
+				.Select(joined => joined.Role.NormalizedName)
+				.ToList();
+
+
+			InspectViewModel insViewModel = new InspectViewModel
+			{
+				NormalizedName = normalizedname,
+				UserName=user
+
+			};
+
+			return View(insViewModel);
+
+
+			
 		}
 
 		[HttpPost]

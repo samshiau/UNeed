@@ -7,9 +7,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UNeedTickets.Models
 {
-	public class ApplicationUser : IdentityUser //IEnumerable<ApplicationUser>
+	public class ApplicationUser : IdentityUser 
 	{
-		//List<ApplicationUser> AppUsers { get; }
 
 		[PersonalData]
 		[Column(TypeName = "nvarchar(100)")]
@@ -23,14 +22,5 @@ namespace UNeedTickets.Models
 		public string? State { get; set; }
 		public string? PostalCode { get; set; }
 
-		//public IEnumerator<ApplicationUser> GetEnumerator()
-	//	{
-	//		return AppUsers.GetEnumerator();
-	//	}
-
-		//IEnumerator IEnumerable.GetEnumerator()
-	//	{
-	//		return GetEnumerator();
-	//	}
 	}
 }
