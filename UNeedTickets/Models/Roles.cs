@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UNeedTickets.Models
 {
-    public class Roles: IdentityRole
+	[NotMapped]
+	public class Roles: IdentityRole
 	{
        // public string Id { get; set; }
       //  public string Name { get; set; }

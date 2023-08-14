@@ -60,6 +60,8 @@ namespace UNeedTickets.Controllers
 		{
 			IdentityUser? user = _db.Users.Find(id);
 
+			return View(user);
+
 			//	var normalizedname = _db.Roles
 			//		.Join
 			//		(
@@ -72,26 +74,31 @@ namespace UNeedTickets.Controllers
 			//		.Select(joined => joined.NormalizedName)
 			//		.ToList();
 
-			var normalizedname = _db.Roles
-				.Join(
-					_db.UserRoles,
-					role => role.Id,
-					userRole => userRole.RoleId,
-					(role, userRole) => new { Role = role, UserRole = userRole }
-				)
-				.Where(joined => joined.UserRole.UserId == id)
-				.Select(joined => joined.Role.NormalizedName)
-				.ToList();
+			//	var normalizedname = _db.Roles
+			//		.Join(
+			//			_db.UserRoles,
+			//			role => role.Id,
+			//			userRole => userRole.RoleId,
+			//			(role, userRole) => new { Role = role, UserRole = userRole }
+			//		)
+			//	.Where(joined => joined.UserRole.UserId == id)
+			//		.Select(joined => joined.Role.NormalizedName)
+			//		.ToList();
 
+			//string sqlQuery = "SELECT NormalizedName FROM UNeed.dbo.AspNetRoles " +
+			//			  "JOIN UNeed.dbo.AspNetUserRoles ON dbo.AspNetUserRoles.RoleId = dbo.AspNetRoles.Id " +
+			//			  "WHERE dbo.AspNetUserRoles.UserId = {0}";
 
-			InspectViewModel insViewModel = new InspectViewModel
-			{
-				NormalizedName = normalizedname,
-				UserName=user
+			//List<string> normalizedname = _db.Roles.FromSqlRaw(sqlQuery, id).Select(role => role.NormalizedName).ToList();
 
-			};
+			//InspectViewModel insViewModel = new InspectViewModel
+			//{
+			//	NormalizedName = normalizedname,
+			//	UserName=user
 
-			return View(insViewModel);
+			//};
+
+			//return View(insViewModel);
 
 
 			

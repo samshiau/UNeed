@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UNeedTickets.Models
 {
-    public class InspectViewModel
+	[NotMapped]
+	public class InspectViewModel
     {
 		//public string UserId { get; set; }
 		public IdentityUser UserName { get; set; }

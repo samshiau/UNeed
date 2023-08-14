@@ -1,14 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UNeedTickets.Models
 {
-    public class UserRoles: IdentityUserRole<string>
+	[NotMapped]
+	public class UserRoles: IdentityUserRole<string>
 	{
-        //[Key]
-       // public int Id { get; set; }
-      //  public string UserId { get; set; }
-      //  public string RoleId { get; set; }
-      //  public string test {get; set; }
+        
     }
 }
